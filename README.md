@@ -32,6 +32,10 @@ PORT=8080 npm run dev
 # Start production server:
 PORT=8080 npm start
 ```
+
+Root is: http://localhost:8080/api/<br>
+Also try: http://localhost:8080/api/facets
+
 Docker Support
 ------
 ```sh
