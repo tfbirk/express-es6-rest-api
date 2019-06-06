@@ -1,6 +1,3 @@
 // our example model is just an Array
-const facets = [
-    { id: 1, "title": "Volume1"},
-    { id: 2, "title": "Volume2"},
-];
+const facets = [];
 export default facets;
