@@ -17,8 +17,9 @@ export default ({ config, db }) => {
 	api.use('/facets', facets({ config, db }));
 
 	// perhaps expose some API metadata at the root
+	// add links to underlying resourcs
 	api.get('/', (req, res) => {
-		res.json({ version });
+		res.json({ version, facets: "/api/facets", volumes: "/api/volumes", initiators: "/api/initiators", users: "/api/users" });
 	});
 
 	return api;

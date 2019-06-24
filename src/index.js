@@ -29,6 +29,10 @@ initializeDb( db => {
 	// internal middleware
 	app.use(middleware({ config, db }));
 
+	// root level (not usually used)
+	// add link to api
+	app.get('/', (req, res) => { res.json({ "api": "/api" }); })
+
 	// api router
 	app.use('/api', api({ config, db }));
 
