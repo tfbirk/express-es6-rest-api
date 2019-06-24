@@ -22,9 +22,13 @@ export default ({ config, db }) => resource({
 
 	/** POST / - Create a new entity */
 	create({ body }, res) {
-		body.id = facets.length.toString(36);
-		facets.push(body);
-		res.json(body);
+		if (!_validateNewFacet(body)) {
+			res.status(400).send({"errorMessage": "Property 'name' is required."})
+		} else {
+			body.id = facets.length.toString(36);
+			facets.push(body);
+			res.json(body);
+		}
 	},
 
 	/** GET /:id - Return a given entity */
@@ -48,3 +52,11 @@ export default ({ config, db }) => resource({
 		res.sendStatus(204);
 	}
 });
+
+function _validateNewFacet(body) {
+	console.log("_validateNewFacet");
+	if (body.hasOwnProperty("name")) {
+		return true;
+	}
+	return false;
+}
